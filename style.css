@@ -1,0 +1,80 @@
+body{
+    background-color: #ff6600;
+}
+
+@font-face {
+    font-family: "Gomo";
+    src: url('Gomo/Gomo.ttf');
+}
+
+.gomo {
+    font-family: "Gomo";
+}
+
+.background-japanese{
+    background-image: url(img/japanese.jpg);
+}
+
+.image-profile{
+    border-radius: 50%;
+    width: 110px;
+    border: 3px solid #ffe0cc;
+}
+
+.name{
+    -webkit-text-stroke: .8px #ffe0cc;
+    color: #ff6600;
+}
+
+.job{
+    -webkit-text-stroke: .5px #ffe0cc;
+    color: #ff6600;
+    margin-top: -5px;
+}
+
+.link-myaccount{
+    width: 75%;
+    padding: 10px 0 3px 0;
+    border: 1px solid #ffe0cc;
+    background-color: #ff6600;
+    border-radius: 30px;
+    margin: 30px 0;
+}
+
+.link-myaccount:hover{
+    width: 75%;
+    padding: 10px 0 3px 0;
+    border: 1px solid #ff6600;
+    background-color: #ffe0cc;
+    border-radius: 30px;
+    margin: 30px 0;
+    transition: .4s;
+}
+
+.link-color{
+    color: #000;
+    text-decoration: none;
+}
+.link-color:hover{
+    color: #000;
+    text-decoration: none;
+}
+
+.socialmedia-color{
+    color: #ffe0cc;
+}
+
+#footer{
+    color: #ff6600;
+    padding: 20px 0 181px 0;
+}
+
+#footer2{
+    color: #ff6600;
+    padding: 20px 0 430px 0;
+}
+
+#footer3{
+    color: #ff6600;
+    padding: 20px 0 150px 0;
+}

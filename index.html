@@ -14,7 +14,7 @@
                 <div class="card-header bg-transparent mb-0">
                     <h5 class="text-center">
                         <span class="font-weight-bold text-primary">
-                            scan
+                            scan 1.2
                         </span>
                     </h5>
                 </div>
@@ -35,7 +35,6 @@
 </body>
 
 <script>
-    console.log('versi 1.1');
     let buttonValue = document.getElementById('buttonValue');
     let valid = document.getElementsByClassName('valid');
     let invalid = document.getElementsByClassName('invalid');
@@ -64,17 +63,20 @@
     function addClassValue(){
         Instascan.Camera.getCameras().then(function(cameras) {
             if (cameras.length > 1) {
-                $('#munculTombol').append('<button type="button" onclick="addClassValue()" id="buttonValue" class="valid">switch</button>');
                 
                 if(valid.length == 1){
                     scanner.start(cameras[0]);    
-                    buttonValue.classList.add('invalid');
-                    buttonValue.classList.remove('valid');
+                    $('#munculTombol').remove();
+                    $('#munculTombol').append('<button type="button" onclick="addClassValue()" id="buttonValue" class="invalid">switch</button>');
+                    // buttonValue.classList.add('invalid');
+                    // buttonValue.classList.remove('valid');
                     console.log('sukses invalid');
                 }else if(invalid.length == 1){
                     scanner.start(cameras[1]);
-                    buttonValue.classList.add('valid');
-                    buttonValue.classList.remove('invalid');
+                    $('#munculTombol').remove();
+                    $('#munculTombol').append('<button type="button" onclick="addClassValue()" id="buttonValue" class="valid">switch</button>');
+                    // buttonValue.classList.add('valid');
+                    // buttonValue.classList.remove('invalid');
                     console.log('sukses valid');
                 }
             } else if(cameras.length == 1){

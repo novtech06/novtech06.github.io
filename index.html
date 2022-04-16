@@ -14,7 +14,7 @@
                 <div class="card-header bg-transparent mb-0">
                     <h5 class="text-center">
                         <span class="font-weight-bold text-primary">
-                            scan 1.6
+                            scan 1.7
                         </span>
                     </h5>
                 </div>
@@ -23,10 +23,11 @@
                     <div class="form-group">
                         <button type="button" onclick="addClassValue()" id="buttonValue" class="invalid">switch</button>
                         <input type="text" id="qrcode" class="form-control my-3" disabled>
-                    </div>
-                    <div id="munculTombol">
+                        <div id="munculTombol">
 
+                        </div>
                     </div>
+                    
                 </div>
             </div>
         </div>
@@ -55,9 +56,12 @@
         video: document.getElementById('scan-qrcode')
     });
     scanner.addListener('scan', function(content) {
+        let tombolNext = document.getElementById('tombolNext');
         // alert(content);
         $("#qrcode").val(content);
-        $('#munculTombol').append('<form action="#" method="post"><a href="#" class="btn btn-primary">Next</a></form>');
+        if(!tombolNext){
+            $('#munculTombol').append('<form action="#" method="post"><a href="#" class="btn btn-primary" id="tombolNext">Next</a></form>');
+        }
     });
     
     function addClassValue(){

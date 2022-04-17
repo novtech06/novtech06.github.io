@@ -1,146 +1,185 @@
-<!-- boostrap cdn 4.5 -->
-<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css">
-<!-- jquery -->
-<script src="assets/jquery.min.js"></script>
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- instascan -->
-<script src="assets/instascan.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- jquery -->
+    <script src="assets/jquery.min.js"></script>
 
-<body>
+    <!-- instascan -->
+    <script src="assets/instascan.min.js"></script>
 
+    <title>Hello, world!</title>
+  </head>
+  <body>
     <div class="container">
         <div class="row justify-content-center mt-5">
             <div class="col-md-5">
                 <div class="card-header bg-transparent mb-0">
                     <h5 class="text-center">
                         <span class="font-weight-bold text-primary">
-                            scan 1.8
+                            scan 1.9
                         </span>
                     </h5>
                 </div>
-                <div class="card-body">
-                    <video id="scan-qrcode" class="mb-3" width="auto" height="auto" style="border: 1px solid black;"></video>
-                    <div class="form-group">
-                        <button type="button" onclick="addClassValue()" id="buttonValue" class="invalid">switch</button>
-                        <input type="text" id="qrcode" class="form-control my-3" disabled>
-                        <div id="munculTombol">
-
-                        </div>
-                    </div>
-                    
+                <div class="card-body text-center">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        Launch static backdrop modal
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
-</body>
-
-<script>
-    let buttonValue = document.getElementById('buttonValue');
-    let valid = document.getElementsByClassName('valid');
-    let invalid = document.getElementsByClassName('invalid');
-
-    // function addClassValue(){
-    //     if(valid.length == 1){
-    //         buttonValue.classList.add('invalid');
-    //         buttonValue.classList.remove('valid');
-    //         console.log('sukses invalid');
-    //     }else if(invalid.length == 1){
-    //         buttonValue.classList.add('valid');
-    //         buttonValue.classList.remove('invalid');
-    //         console.log('sukses valid');
-    //     }
-    // }
-
-    let scanner = new Instascan.Scanner({
-        video: document.getElementById('scan-qrcode')
-    });
-    scanner.addListener('scan', function(content) {
-        let tombolNext = document.getElementById('tombolNext');
-        // alert(content);
-        $("#qrcode").val(content);
-        if(!tombolNext){
-            $('#munculTombol').append('<form action="#" method="post"><a href="#" class="btn btn-primary" id="tombolNext">Next</a></form>');
-        }
-    });
     
-    function addClassValue(){
-        Instascan.Camera.getCameras().then(function(cameras) {
-            if (cameras.length > 1) {
-                if(valid.length == 1){
-                    scanner.start(cameras[0]);  
-                    buttonValue.classList.add('invalid');
-                    buttonValue.classList.remove('valid');
-                    console.log('sukses invalid');
-                }else if(invalid.length == 1){
-                    scanner.start(cameras[1]);
-                    buttonValue.classList.add('valid');
-                    buttonValue.classList.remove('invalid');
-                    console.log('sukses valid');
-                }
-            } else if(cameras.length == 1){
-                console.log('kamera anda hanya 1');
-                scanner.start(cameras[0]);    
-            }else{
-                console.error('No Cameras Found');
-            }
-        }).catch(function(e) {
-            console.error(e.message);
-            // console.error(e);
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <video id="scan-qrcode" class="mb-3" width="auto" height="auto" style="border: 1px solid black;"></video>
+                <div class="form-group">
+                    <button type="button" onclick="addClassValue()" id="buttonValue" class="invalid">switch</button>
+                    <input type="text" id="qrcode" class="form-control my-3" disabled>
+                    <div id="munculTombol">
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Understood</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    -->
+    <script>
+        let buttonValue = document.getElementById('buttonValue');
+        let valid = document.getElementsByClassName('valid');
+        let invalid = document.getElementsByClassName('invalid');
+    
+        // function addClassValue(){
+        //     if(valid.length == 1){
+        //         buttonValue.classList.add('invalid');
+        //         buttonValue.classList.remove('valid');
+        //         console.log('sukses invalid');
+        //     }else if(invalid.length == 1){
+        //         buttonValue.classList.add('valid');
+        //         buttonValue.classList.remove('invalid');
+        //         console.log('sukses valid');
+        //     }
+        // }
+    
+        let scanner = new Instascan.Scanner({
+            video: document.getElementById('scan-qrcode')
         });
-    }
-
-
-    // function addClassValue(){
-    //     // jika kamera tidak ada atau lebih dari 1
-    //     if(cameras.length > 1){
-    //         // tambah tombol switch
-    //         $('#munculTombol').append('<button type="button" onclick="addClassValue()" id="buttonValue" class="valid">switch</button>');
-            
-    //         if(valid.length == 1){
-    //             Instascan.Camera.getCameras().then(function(cameras) {
-    //                 console.log(cameras.length == undefined);
-    //                 if (cameras.length > 0) {
-    //                     scanner.start(cameras[0]);
-    //                 } else {
-    //                     console.error('No Cameras Found');
-    //                 }
-    //             }).catch(function(e) {
-    //                 console.error(e);
-    //             });
-    //             buttonValue.classList.add('invalid');
-    //             buttonValue.classList.remove('valid');
-    //             console.log('sukses invalid');
-    //         }else if(invalid.length == 1){
-    //             Instascan.Camera.getCameras().then(function(cameras) {
-    //                 if (cameras.length > 0) {
-    //                     scanner.start(cameras[1]);
-    //                 } else {
-    //                     console.error('No Cameras Found');
-    //                 }
-    //             }).catch(function(e) {
-    //                 console.error(e);
-    //             });
-    //             buttonValue.classList.add('valid');
-    //             buttonValue.classList.remove('invalid');
-    //             console.log('sukses valid');
-    //         }
-    //     }else{
-    //         // hapus tombol switch
-    //         $('#munculTombol').remove();
-
-    //         Instascan.Camera.getCameras().then(function(cameras) {
-    //             if (cameras.length > 0) {
-    //                 scanner.start(cameras[0]);
-    //             } else {
-    //                 console.error('No Cameras Found');
-    //             }
-    //         }).catch(function(e) {
-    //             console.error(e);
-    //         });
-    //     }
-    // }
-
-    addClassValue();
+        scanner.addListener('scan', function(content) {
+            let tombolNext = document.getElementById('tombolNext');
+            // alert(content);
+            $("#qrcode").val(content);
+            if(!tombolNext){
+                $('#munculTombol').append('<form action="#" method="post"><a href="#" class="btn btn-primary" id="tombolNext">Next</a></form>');
+            }
+        });
+        
+        function addClassValue(){
+            Instascan.Camera.getCameras().then(function(cameras) {
+                if (cameras.length > 1) {
+                    if(valid.length == 1){
+                        scanner.start(cameras[0]);  
+                        buttonValue.classList.add('invalid');
+                        buttonValue.classList.remove('valid');
+                        console.log('sukses invalid');
+                    }else if(invalid.length == 1){
+                        scanner.start(cameras[1]);
+                        buttonValue.classList.add('valid');
+                        buttonValue.classList.remove('invalid');
+                        console.log('sukses valid');
+                    }
+                } else if(cameras.length == 1){
+                    console.log('kamera anda hanya 1');
+                    scanner.start(cameras[0]);    
+                }else{
+                    console.error('No Cameras Found');
+                }
+            }).catch(function(e) {
+                console.error(e.message);
+                // console.error(e);
+            });
+        }
     
-</script>
+    
+        // function addClassValue(){
+        //     // jika kamera tidak ada atau lebih dari 1
+        //     if(cameras.length > 1){
+        //         // tambah tombol switch
+        //         $('#munculTombol').append('<button type="button" onclick="addClassValue()" id="buttonValue" class="valid">switch</button>');
+                
+        //         if(valid.length == 1){
+        //             Instascan.Camera.getCameras().then(function(cameras) {
+        //                 console.log(cameras.length == undefined);
+        //                 if (cameras.length > 0) {
+        //                     scanner.start(cameras[0]);
+        //                 } else {
+        //                     console.error('No Cameras Found');
+        //                 }
+        //             }).catch(function(e) {
+        //                 console.error(e);
+        //             });
+        //             buttonValue.classList.add('invalid');
+        //             buttonValue.classList.remove('valid');
+        //             console.log('sukses invalid');
+        //         }else if(invalid.length == 1){
+        //             Instascan.Camera.getCameras().then(function(cameras) {
+        //                 if (cameras.length > 0) {
+        //                     scanner.start(cameras[1]);
+        //                 } else {
+        //                     console.error('No Cameras Found');
+        //                 }
+        //             }).catch(function(e) {
+        //                 console.error(e);
+        //             });
+        //             buttonValue.classList.add('valid');
+        //             buttonValue.classList.remove('invalid');
+        //             console.log('sukses valid');
+        //         }
+        //     }else{
+        //         // hapus tombol switch
+        //         $('#munculTombol').remove();
+    
+        //         Instascan.Camera.getCameras().then(function(cameras) {
+        //             if (cameras.length > 0) {
+        //                 scanner.start(cameras[0]);
+        //             } else {
+        //                 console.error('No Cameras Found');
+        //             }
+        //         }).catch(function(e) {
+        //             console.error(e);
+        //         });
+        //     }
+        // }
+    
+        addClassValue();
+        
+    </script>
+  </body>
+</html>

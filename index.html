@@ -23,7 +23,7 @@
                 <div class="card-header bg-transparent mb-0">
                     <h5 class="text-center">
                         <span class="font-weight-bold text-primary">
-                            scan 2.2
+                            scan 2.3
                         </span>
                     </h5>
                 </div>
@@ -44,7 +44,7 @@
         <div class="modal-content">
             <div class="modal-header">
             <h5 class="modal-title" id="staticBackdropLabel">SCAN QR CODE</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-close" onclick="stopCamera()" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <video id="scan-qrcode" class="mb-3" width="100%" height="auto" style="border: 1px solid black;"></video>
@@ -100,6 +100,11 @@
             }
         });
         
+        function stopCamera(){
+            scanner.stop();
+            console.log('berhenti');
+        }
+
         function addClassValue(){
             Instascan.Camera.getCameras().then(function(cameras) {
                 if (cameras.length > 1) {

@@ -89,7 +89,8 @@
         // }
     
         let scanner = new Instascan.Scanner({
-            video: document.getElementById('scan-qrcode')
+            video: document.getElementById('scan-qrcode'),
+          mirror: false,
         });
         scanner.addListener('scan', function(content) {
             let tombolNext = document.getElementById('tombolNext');
